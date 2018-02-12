@@ -1,24 +1,6 @@
 // At the top of the `liri.js` file, write the code you need to grab the data from keys.js. Then store the keys in a variable.
 
-var keys = require('./keys.js');
-var twitterkeys = keys.twitterKeys;
-
-var client = new Twitter({
-    consumer_key: process.env.TWITTER_CONSUMER_KEY,
-    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-    access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-});
-
-var params = {
-    screen_name: 'nodejs'
-};
-client.get('statuses/user_timeline', params, function (error, tweets, response) {
-    if (!error) {
-        console.log(tweets);
-    }
-});
-
+// 
 
 
 // Make it so liri.js can take in one of the following commands:
@@ -35,17 +17,17 @@ client.get('statuses/user_timeline', params, function (error, tweets, response) 
 `do-what-it-says`
 
 
-var twitterConsumerKey = keys.twitterKeys.consumer_key
-var twitterConsumerSecret = keys.twitterKeys.consumer_secret
-var twitterAccessTokenKey = keys.twitterKeys.access_token_key
-var twitterAccessTokenSecret = keys.twitterKeys.access_token_secret
+// var twitterConsumerKey = keys.twitterKeys.consumer_key
+// var twitterConsumerSecret = keys.twitterKeys.consumer_secret
+// var twitterAccessTokenKey = keys.twitterKeys.access_token_key
+// var twitterAccessTokenSecret = keys.twitterKeys.access_token_secret
 
-var client = new Twitter({
-    consumer_key: twitterConsumerKey,
-    consumer_secret: twitterConsumerSecret,
-    access_token_key: twitterAccessTokenKey,
-    access_token_secret: twitterAccessTokenSecret
-});
+// var client = new Twitter({
+//     consumer_key: twitterConsumerKey,
+//     consumer_secret: twitterConsumerSecret,
+//     access_token_key: twitterAccessTokenKey,
+//     access_token_secret: twitterAccessTokenSecret
+// });
 
 
 //variables to call the information from the keys.js file which stores the twitter access keys needed for the twitter option of this app
@@ -136,44 +118,44 @@ prompt.get({
 
 
 //twitter function
-function myTwitter() {
-    //this assigns the variable client to get the information from the twitterKeys variable set above so we can access twitters information
-    var client = new Twitter({
-        consumer_key: twitterKeys.consumer_key,
-        consumer_secret: twitterKeys.consumer_secret,
-        access_token_key: twitterKeys.access_token_key,
-        access_token_secret: twitterKeys.access_token_secret,
-    });
-    //this sets the variable params to search the username kellsbellslovee and only return back the last 20 tweets and then it doesn't trim the username so the username information will come up instead of the twitter id#
-    var params = {
-        screen_name: 'kellsbellslovee',
-        count: '20',
-        trim_user: false,
-    }
+// function myTwitter() {
+//     //this assigns the variable client to get the information from the twitterKeys variable set above so we can access twitters information
+//     var client = new Twitter({
+//         consumer_key: twitterKeys.consumer_key,
+//         consumer_secret: twitterKeys.consumer_secret,
+//         access_token_key: twitterKeys.access_token_key,
+//         access_token_secret: twitterKeys.access_token_secret,
+//     });
+//     //this sets the variable params to search the username kellsbellslovee and only return back the last 20 tweets and then it doesn't trim the username so the username information will come up instead of the twitter id#
+//     var params = {
+//         screen_name: 'nodejs',
+//         count: '20',
+//         trim_user: false,
+//     }
 
-    // this is the call to twitter, it gets the statuses/user timeline from twitter based on the params set above
-    client.get('statuses/user_timeline', params, function (error, timeline, response) {
-        if (!error) {
-            for (tweet in timeline) {
-                //this creates the variable tdate which will store the result of the date from the twitter call for easier access later
-                var tDate = new Date(timeline[tweet].created_at);
+//     // this is the call to twitter, it gets the statuses/user timeline from twitter based on the params set above
+//     client.get('statuses/user_timeline', params, function (error, timeline, response) {
+//         if (!error) {
+//             for (tweet in timeline) {
+//                 //this creates the variable tdate which will store the result of the date from the twitter call for easier access later
+//                 var tDate = new Date(timeline[tweet].created_at);
 
-                //console.log all of the tweets organizing them by tweet# followed by the date of the tweet and finally the text of the tweet itself
-                console.log("Tweet #: " + (parseInt(tweet) + 1) + " ");
-                console.log(tDate.toString().slice(0, 24) + " ");
-                console.log(timeline[tweet].text);
-                console.log("\n");
+//                 //console.log all of the tweets organizing them by tweet# followed by the date of the tweet and finally the text of the tweet itself
+//                 console.log("Tweet #: " + (parseInt(tweet) + 1) + " ");
+//                 console.log(tDate.toString().slice(0, 24) + " ");
+//                 console.log(timeline[tweet].text);
+//                 console.log("\n");
 
-                //append all of this information to the txt file 
-                fs.appendFile('log.txt', "Tweet #: " + (parseInt(tweet) + 1) + "\n");
-                fs.appendFile('log.txt', timeline[tweet].text + "\n");
-                fs.appendFile('log.txt', "\n");
+//                 //append all of this information to the txt file 
+//                 fs.appendFile('log.txt', "Tweet #: " + (parseInt(tweet) + 1) + "\n");
+//                 fs.appendFile('log.txt', timeline[tweet].text + "\n");
+//                 fs.appendFile('log.txt', "\n");
 
-            }
-        }
-    })
+//             }
+//         }
+//     })
 
-}
+// }
 
 //spotify function
 
